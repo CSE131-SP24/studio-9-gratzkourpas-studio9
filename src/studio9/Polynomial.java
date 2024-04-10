@@ -1,5 +1,6 @@
 package studio9;
 
+import java.lang.reflect.Array;
 import java.util.LinkedList;
 
 public class Polynomial {
@@ -11,6 +12,9 @@ public class Polynomial {
 	 */
 	public Polynomial() {
 		//FIXME
+		
+		this.list = new LinkedList<>(); 
+		
 	}
 
 	
@@ -20,7 +24,10 @@ public class Polynomial {
 	 * @return polynomial with added term
 	 */
 	public void addTerm(double coeff) {
+		
 		//FIXME
+		list.add(coeff); 
+				
 	}
 	
 	/*
@@ -29,7 +36,15 @@ public class Polynomial {
 	 * Cx^N + Cx^N-1 + ... + Cx + C
 	 */
 	public String toString() {
-		return ""; //FIXME
+//		List<String> list1 = new LinkedList<String>();
+		String x = "";
+		int largestDegree = list.size()-1; 
+		for (int i = 0; i<list.size(); i++)	{
+			x += list.get(i)+"x^"+largestDegree;
+			largestDegree--;
+		}
+		return x; //FIXME
+		
 	}
 	
 	/**
@@ -38,7 +53,14 @@ public class Polynomial {
 	 * @return value of polynomial at that x
 	 */
 	public double evaluate(double x) {
-		return 0;//FIXME
+		int y = 0;
+		int largestDegree = list.size()-1;
+		for (int i = 0; i<list.size(); i++)	{
+		y+=list.get(i)*(Math.pow(x, largestDegree));
+		largestDegree--;
+		}
+		return y;
+		
 	}
 
 	
